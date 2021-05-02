@@ -33,17 +33,18 @@ jobs:
         run: west update
       - name: West Zephyr export
         run: west zephyr-export
-      - name: West Build (RoMac)
-        run: west build -s zmk/app -b nice_nano -- -DSHIELD=romac -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
-      - name: RoMac DTS File
+      - name: West Build (GerryPad)
+        run: west build -s zmk/app -b nice_nano -- -DSHIELD=gerrypad -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+      - name: GerryPad DTS File
         if: ${{ always() }}
         run: cat -n build/zephyr/nice_nano.dts.pre.tmp
-      - name: RoMac Kconfig file
+      - name: GerryPad Kconfig file
         run: cat build/zephyr/.config | grep -v "^#" | grep -v "^$"
       - name: Rename zmk.uf2
-        run: cp build/zephyr/zmk.uf2 romac_nice_nano.uf2
-      - name: Archive (RoMac)
+        run: cp build/zephyr/zmk.uf2 gerrypad_nice_nano.uf2
+      - name: Archive (GerryPad)
         uses: actions/upload-artifact@v2
         with:
           name: firmware
-          path: romac_nice_nano.uf2
+          path: gerrypad_nice_nano.uf2
+

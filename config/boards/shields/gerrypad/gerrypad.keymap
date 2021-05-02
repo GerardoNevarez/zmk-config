@@ -1,0 +1,57 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/bt.h>
+
+#define NUMPAD 0
+#define SETUP  1
+
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        numpad {
+// ---------------------------
+// |ESC/SETUP | / | * |   -   |
+// | 7        | 8 | 9 |   +   |
+// | 4        | 5 | 6 |       |
+// | 1        | 2 | 3 | Enter |
+// | 0        |   | . |       |
+// ---------------------------
+            bindings = <
+    &lt SETUP ESC   &kp SLASH   &kp ASTERISK  &kp MINUS
+    &kp N7          &kp N8      &kp N9        &kp PLUS
+    &kp N4          &kp N5      &kp N6        &none
+    &kp N1          &kp N2      &kp N3        &kp ENTER
+    &kp N0          &none       &kp DOT       &none
+            >;
+        };
+
+        setup {
+// -----------------------------------
+// |        |  (  |    )   |         |
+// | 7      | 8   |    9   |  Reset  |
+// | BT4    | BT5 |    6   |         |
+// | BT1    | BT2 |   BT3  | Bootldr |
+// | BT CLR |     | BT_TOG |         |
+// -----------------------------------
+            bindings = <
+    &trans          &kp LPAR       &kp RPAR        &none
+    &none           &none          &none           &reset
+    &bt BT_SEL 3    &bt BT_SEL 4   &none           &trans
+    &bt BT_SEL 0    &bt BT_SEL 1   &bt BT_SEL 2    &bootloader
+    &bt BT_CLR      &trans         &out OUT_TOG    &trans
+            >;
+        };
+
+    };
+};
+
