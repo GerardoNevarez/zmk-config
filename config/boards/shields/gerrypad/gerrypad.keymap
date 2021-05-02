@@ -27,28 +27,28 @@
 // | 0        |   | . |       |
 // ---------------------------
             bindings = <
-    &lt SETUP ESC   &kp SLASH   &kp ASTERISK  &kp MINUS
-    &kp N7          &kp N8      &kp N9        &kp PLUS
-    &kp N4          &kp N5      &kp N6        &none
-    &kp N1          &kp N2      &kp N3        &kp ENTER
-    &kp N0          &none       &kp DOT       &none
+    &lt SETUP ESC      &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp KP_MINUS
+    &kp KP_N7          &kp KP_N8      &kp KP_N9        &kp KP_PLUS
+    &kp KP_N4          &kp KP_N5      &kp KP_N6        &none
+    &kp KP_N1          &kp KP_N2      &kp KP_N3        &kp KP_ENTER
+    &kp KP_N0          &none          &kp KP_DOT       &none
             >;
         };
 
         setup {
-// -----------------------------------
-// |        |  (  |    )   |         |
-// | 7      | 8   |    9   |  Reset  |
-// | BT4    | BT5 |    6   |         |
-// | BT1    | BT2 |   BT3  | Bootldr |
-// | BT CLR |     | BT_TOG |         |
-// -----------------------------------
+// ---------------------------------------
+// |        | NumLock |    (    |    )    |
+// |        |         |         |  Reset  |
+// | BT4    | BT5     |         |         |
+// | BT1    | BT2     |   BT3   | Bootldr |
+// | BT CLR |         | OUT_TOG |         |
+// ---------------------------------------
             bindings = <
-    &trans          &kp LPAR       &kp RPAR        &none
-    &none           &none          &none           &reset
-    &bt BT_SEL 3    &bt BT_SEL 4   &none           &trans
-    &bt BT_SEL 0    &bt BT_SEL 1   &bt BT_SEL 2    &bootloader
-    &bt BT_CLR      &trans         &out OUT_TOG    &trans
+    &trans          &kp KP_NUMLOCK  &kp LPAR        &kp RPAR        
+    &none           &none           &none           &reset
+    &bt BT_SEL 3    &bt BT_SEL 4    &none           &trans
+    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bootloader
+    &bt BT_CLR      &trans          &out OUT_TOG    &trans
             >;
         };
 
